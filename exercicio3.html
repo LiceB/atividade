@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Departamento</title>
+</head>
+<body onload="buscarListaVeiculos()">
+    <h3>Selecione um carro</h3>
+    <select id="veiculo">
+        <option>Selecio um veiculo</option>
+    </select>
+</body>
+
+<script>
+    
+    // Veiculos ----------------------------
+    function criarListaVeiculos(data) {
+        debugger
+        for(let i = 0; i < data.length; i++) {
+            let item = `<option>${data[i].modelo}</option>`
+            document.getElementById("veiculo").innerHTML += item
+        }
+    }
+
+    function buscarListaVeiculos(data) {
+        fetch("http://demo9506393.mockable.io/veiculos")
+        .then(response => response.json())
+        .then(data => criarListaVeiculos(data))
+        .catch(error => alert(error))
+    }
+
+</script>
+</html>
