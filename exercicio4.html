@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Departamento</title>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</head>
+
+<body onload="buscarListaMaterias()">
+    <table id="materia" class="centered">
+        <thead>
+            <tr>
+                <th>Matéria</th>
+                <th>Professor</th>
+                <th>Sala</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+<script>
+
+    // Materias ----------------------------
+    function criarListaMaterias(data) {
+        debugger
+        for (let i = 0; i < data.length; i++) {
+            let item = `<tr><td>${data[i].materia}</td><td>${data[i].professor}</td><td>${data[i].sala}</td></tr>`
+            document.getElementById("materia").innerHTML += item
+        }
+    }
+
+    function buscarListaMaterias(data) {
+        fetch("http://demo9506393.mockable.io/materias")
+            .then(response => response.json())
+            .then(data => criarListaMaterias(data))
+            .catch(error => alert(error))
+    }
+
+</script>
+
+</html>
